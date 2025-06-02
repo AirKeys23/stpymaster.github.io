@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+      footer{  margin-top: 56px; } /*привязка подвала */
+      #contact {color:black;}
+    </style>
+    <meta charset="utf-8">
+    <title>Заявка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/html6.css" rel="stylesheet" type="text/css">
+
+    <!-- LOAD JS FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+    <script src="js/selectnav.js"></script>
+    <script src="js/ender.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/booking.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('#datepicker').datepicker();
+        });
+    </script>
+    
+    
+</head>
+
+<body>
+    <!-- header begin -->
+    <header>
+        <div id="logo">
+            <div class="inner">
+                <a href="index.html">
+                    <img src="img/logos1s.jpg" alt=""></a>
+            </div>
+        </div>
+
+
+        <!-- mainourservice begin -->
+        <div id="mainourservice-container">
+            <ul id="mainourservice">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="service.html">Услуги</a>
+                    <ul>
+                        <li><a href="service.html">Список услуг</a></li>
+                        <li><a href="usluga.html">Отделочные работы</a></li>
+                        <li><a href="usluga1.html">Демонтажные работы</a></li>
+                        <li><a href="usluga2.html">Сантехнические работы</a></li>
+                        <li><a href="usluga3.html">Плиточные работы</a></li>
+                    </ul>
+                </li>
+                <li><a href="zayavka.html">Заявка</a></li>
+                <li><a href="calculator.html">Калькулятор</a>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <!-- header close -->
+
+<script>
+    $(document).ready(function(){
+  $('.phone').inputmask("+7(999)999-99-99", { "placeholder": "_" });
+});
+
+// выбор времени при записи на приём
+const employees = {
+  employee1: ['10:00', '12:00', '14:00'],
+  employee2: ['11:00', '13:00', '15:00'],
+  employee3: ['12:00', '14:00', '16:00']
+};
+
+const employeeSelect = document.getElementById('employee');
+const timeSelect = document.getElementById('time');
+const dateInput = document.getElementById('date');
+
+function updateAvailableTimes() {
+  const employee = employeeSelect.value;
+  const date = dateInput.value;
+
+  const availableTimes = employees[employee].filter(time => {
+    const timeDate = new Date(`${date} ${time}`);
+    return timeDate > new Date();
+  });
+
+  timeSelect.innerHTML = '<option value="">Выберите время</option>';
+  availableTimes.forEach(time => {
+    const option = document.createElement('option');
+    option.value = time;
+    option.textContent = time;
+    timeSelect.appendChild(option);
+  });
+}
+
+employeeSelect.addEventListener('change', updateAvailableTimes);
+dateInput.addEventListener('change', updateAvailableTimes);
+</script>
+
+
+    <!-- subheader begin -->
+    <div id="subheader">
+        <h1>Оставить заявку</h1>
+    </div>
+    <!-- subheader close -->
+
+    <!-- content begin -->
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <div class="contact_form_holder">
+                        
+                        
+                        
+                        
+                        <form id="contact" class="row" name="form1" onsubmit="submitForm(event)" method="POST" action="php/sender.php">
+
+                            <div class="span4">
+                                <label for="name">Ваше имя</label>
+                            <input type="name" class="full" id="name" name="name"  title="Использовать только буквы" onkeydown="return event.keyCode < 48 || event.keyCode > 57" required>
+                            </div>
+
+                            <div class="span4">
+                                <label for="email">Ваш email</label>
+                            <input type="mail" class="full" id="email" name="email" required>
+                            </div>
+
+                            <div class="span4">
+                                <label>Когда Вам перезвонить? <span class="req">*</span></label>
+                                <input type="datepicker" class="full" name="datepicker" id="datepicker" />
+                            </div>
+
+                            <div class="span4">
+                                <label for="phone">Телефон</label>
+                            <input type="telephone" class="full" id="phone-input" name="phone" class="phone" >
+                            </div>
+
+                            <div class="span8">
+                                <label for="message">Сообщение</label>
+                            <textarea type="message" id="message" name="message" class="full" required></textarea>
+                            <button type="submit">Отправить</button>
+                            </div>
+
+
+                        </form>
+                        
+                        
+                        <!--
+                        
+                        <form onsubmit="submitForm(event)" method="POST" action="send-email.php">
+      <label for="name">Ваше имя</label>
+      <input type="text" id="name" name="name"  title="Использовать только буквы" onkeydown="return event.keyCode < 48 || event.keyCode > 57">
+      <label for="email">Ваш email</label>
+      <input type="email" id="email" name="email" required>
+	  <label for="phone">Ваш телефон</label>
+<input type="tel" id="phone-input" name="phone" class="phone" required pattern="\+7\s?\(\d{3}\)\s?\d{3}-\d{2}-\d{2}" title="Поле должно быть заполнено">
+      <label for="message">Сообщение</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+    -->
+    
+    
+    
+                        
+                    </div>
+
+                </div>
+
+                <div id="sidebar" class="span4">
+                    <!-- widget category -->
+                    <!-- widget tags -->
+                    <!-- widget text -->
+                    <div class="widget widget-opening-hours">
+                        <h4 class="title"><span>Время работы</span></h4>
+                        <ul class="opening-hours">
+                            <li><span class="op-days">Понедельник - Пятница</span><span class="op-time">08:00 - 17:00</span></li>
+                            <li><span class="op-days">Выходные</span><span class="op-time">10:00 - 15:00</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget widget-text">
+                        <h4 class="title"><span>Мы находимся по адресу:</span></h4>
+                        <address>
+                            Россия, Кемерово, ул. Волгоградская 51а
+                        <span><strong>Тел.:</strong>8-800-700-12-12</span>
+                            <span><strong>Тел.:</strong>8-800-500-32-32</span>
+                            <span><strong>Email:</strong><a href="mailto:mail@mail.com">stroiseti@mail.com</a></span>
+                            <span><strong>Сайт:</strong><a href="http://html6.com.ru">http://stroiseti.ru</a></span>
+                        </address>
+
+                        <div class="social-icons">
+                            <a href="https://telegram.me/LOGIN" target="_blank">
+                                <img src="img/social-icons/telegram.png" alt="" /> </a>
+                            <a href="https://wa.me/88007001212?text=Приветсвуем! СтройСеть - строительная компания" target="_blank">
+                                <img src="img/social-icons/whatsapp.png" alt="" /></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+	<!-- content close -->
+
+    <!-- footer begin -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="span6">
+                    &copy; 2023 СтройСеть - строительная компания
+                </div>
+                <div class="span6">
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Главная</a></li>
+                            <li><a href="service.html">Услуги</a></li>
+                            <li><a href="zayavka.html">Заявка</a></li>
+                            <li><a href="gallery.html">Галерея</a></li>
+                            <li><a href="contact.html">Связь</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- footer close -->
+
+</body>
+
+</html>

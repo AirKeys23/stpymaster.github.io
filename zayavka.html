@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+      footer{  margin-top: 56px; } /*привязка подвала */
+      input[type="datetime-local"]{border: none;background: #eee;color: black;}
+      .pd{margin-top:5px;}
+        .galka{margin-top:-3px;}
+    </style>
+    <meta charset="utf-8">
+    <title>Заявка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/html6.css" rel="stylesheet" type="text/css">
+
+    <!-- LOAD JS FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+    <script src="js/selectnav.js"></script>
+    <script src="js/ender.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/booking.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('#datepicker').datepicker();
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+ $("#person_num").mask("+7(999) 999-9999");});
+    </script>
+    
+</head>
+
+<body>
+    <!-- header begin -->
+    <header>
+        <div id="logo">
+            <div class="inner">
+                <a href="index.html">
+                    <img src="img/logos1s.jpg" alt=""></a>
+            </div>
+        </div>
+
+
+        <!-- mainourservice begin -->
+        <div id="mainourservice-container">
+            <ul id="mainourservice">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="service.html">Услуги</a>
+                    <ul>
+                        <li><a href="service.html">Список услуг</a></li>
+                        <li><a href="usluga.html">Отделочные работы</a></li>
+                        <li><a href="usluga1.html">Демонтажные работы</a></li>
+                        <li><a href="usluga2.html">Сантехнические работы</a></li>
+                        <li><a href="usluga3.html">Плиточные работы</a></li>
+                    </ul>
+                </li>
+                <li><a href="zayavka.html">Заявка</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </div>
+
+    </header>
+    <!-- header close -->
+
+    <!-- subheader begin -->
+    <div id="subheader">
+        <h1>Оставить заявку</h1>
+    </div>
+    <!-- subheader close -->
+
+    <!-- content begin -->
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <div class="contact_form_holder">
+                        <form id="contact" class="row" name="form1" method="post" action="php/sender.php">
+
+                            <div class="span4">
+                                <label>Имя</label>
+                                <input type="text" class="full" name="name" id="name" onkeydown="return event.keyCode < 48 || event.keyCode > 57" required placeholder="Имя"/>
+                            </div>
+
+                            <div class="span4">
+                                <label>Email <span class="req">*</span></label>
+                                <input type="text" class="full" name="email" id="email" required placeholder="Введите Email"/>
+                                <div id="error_email" class="error">Пожалуйста, введите Email!</div>
+                            </div>
+
+                            <div class="span4">
+                                <label>Телефон <span class="req">*</span></label>
+                                <input type="text" class="full art-stranger" name="phone" id="person_num" required placeholder="Введите телефон"/>
+                                <div id="error_person_num" class="error">Введите телефон</div>
+                            </div>
+                            
+                            <div class="span4">
+                                <p class="pd"><input type="checkbox" class="galka" id="politics" onclick="check();" value="" autocomplete="off" />  Нажимая на кнопку я даю <a href="#">согласие на обработку персональных данных.</a></p>
+                           
+                            </div>
+
+                            <div class="span8">
+                                <label>Сообщение</label>
+                                <textarea cols="10" rows="10" name="message" id="message" class="full" placeholder="Введите сообщение"></textarea>
+                                <div id="error_message" class="error">Введите сообщение</div>
+                                <div id="mail_success" class="success">Спасибо, отправлено!</div>
+                                <div id="mail_failed" class="error">Ошибка!</div>
+
+                                <button type="submit" name="submit" class="submit" disabled="">Отправить</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <div id="sidebar" class="span4">
+                    <!-- widget category -->
+                    <!-- widget tags -->
+                    <!-- widget text -->
+                    <div class="widget widget-opening-hours">
+                        <h4 class="title"><span>Время работы</span></h4>
+                        <ul class="opening-hours">
+                            <li><span class="op-days">Понедельник - Пятница</span><span class="op-time">08:00 - 17:00</span></li>
+                            <li><span class="op-days">Выходные</span><span class="op-time">10:00 - 15:00</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget widget-text">
+                        <h4 class="title"><span>Мы находимся по адресу:</span></h4>
+                        <address>
+                            Россия, Кемеровская область – Кузбасс, 650044, г. Кемерово, ул. Суворова, 18а, пом. 01
+                        <span><strong>Тел.:</strong>8-951-607-76-14</span>
+                            <span><strong>Тел.:</strong>8-952-167-55-27</span>
+                            <span><strong>Email:</strong><a href="mailto:mail@mail.com">AirKeys90@gmail.com</a></span>
+                        </address>
+
+                        <div class="social-icons">
+                            <a href="https://telegram.me/LOGIN" target="_blank">
+                                <img src="img/social-icons/telegram.png" alt="" /> </a>
+                            <a href="https://wa.me/88007001212?text=Приветсвуем! СтройСеть - строительная компания" target="_blank">
+                                <img src="img/social-icons/whatsapp.png" alt="" /></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+	<!-- content close -->
+
+    <!-- footer begin -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="span6">
+                    &copy; 2025 ООО"СтройМастер" - строительная компания
+                </div>
+                <div class="span6">
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Главная</a></li>
+                            <li><a href="service.html">Услуги</a></li>
+                            <li><a href="zayavka.html">Заявка</a></li>
+                            <li><a href="gallery.html">Галерея</a></li>
+                            <li><a href="contact.html">Связь</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- footer close -->
+
+
+
+<script src="js/maska-nomera.js" type="text/javascript" ></script>
+
+      <script>
+$('.art-stranger').mask('+7 (999) 999-99-99');
+
+$.fn.setCursorPosition = function(pos) {
+  if ($(this).get(0).setSelectionRange) {
+    $(this).get(0).setSelectionRange(pos, pos);
+  } else if ($(this).get(0).createTextRange) {
+    var range = $(this).get(0).createTextRange();
+    range.collapse(true);
+    range.moveEnd('character', pos);
+    range.moveStart('character', pos);
+    range.select();
+  }
+};
+
+
+$('input[type="tel"]').click(function(){
+    $(this).setCursorPosition(4);  // set position number
+  });
+</script>
+
+
+
+<script>
+function check() {
+var submit = document.getElementsByName('submit')[0];
+if (document.getElementById('politics').checked)
+submit.disabled = '';
+else
+submit.disabled = 'disabled';
+}
+</script>
+
+
+</body>
+
+</html>
